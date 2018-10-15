@@ -13,7 +13,7 @@ pub fn run(config: Config) -> Result<(), String> {
             eprintln!("Failed to read from {}: {}", config.srcpath, err);
             0
         });
-        eprintln!("{}", std::ffi::OsStr::from_bytes(&buf[..count]).to_str().unwrap());
+        eprintln!("{}", std::ffi::OsStr::from_bytes(&buf[..count]).to_str().unwrap().trim_right());
 
         match setup_dstsock(&config.dstpath) {
             Ok(dstsock) => {
